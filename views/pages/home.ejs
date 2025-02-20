@@ -3,25 +3,42 @@
 <head>
   <%- include("../partials/header") %>
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <div class="container mx-auto p-5">
-    <h1 class="text-3xl font-bold text-center mb-5">Pokédex</h1>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen">
+ 
+  <div class="bg-red-700 shadow-2xl border-8 border-red-900 rounded-2xl p-6 w-full max-w-3xl text-white relative">
+    
+  
+    <div class="absolute top-3 left-3 flex space-x-2">
+      <div class="w-5 h-5 bg-green-400 rounded-full shadow-lg animate-pulse"></div>
+      <div class="w-4 h-4 bg-yellow-400 rounded-full shadow-md"></div>
+      <div class="w-3 h-3 bg-red-500 rounded-full shadow-sm"></div>
+    </div>
 
-    <!-- 🔍 Search Form -->
+
+    <h1 class="text-4xl font-bold text-center mb-5">Pokédex</h1>
+
+   
     <form action="/search" method="GET" class="flex justify-center mb-5">
-      <input type="text" name="name" placeholder="Search Pokémon..." class="px-4 py-2 border rounded-l-lg focus:outline-none">
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-r-lg">Search</button>
+      <input type="text" name="name" placeholder="Search Pokémon..."
+      class="px-4 py-2 w-full max-w-md border border-gray-400 rounded-l-lg focus:outline-none text-black placeholder-white-800">
+      <button type="submit" class="bg-gray-800 text-white px-4 py-2 rounded-r-lg hover:bg-gray-900 transition">
+        Search
+      </button>
     </form>
 
-    <!-- Pokémon List -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <% pokemonList.forEach(pokemon => { %>
-        <a href="/pokemon/<%= pokemon.name %>" class="p-4 bg-white shadow rounded-lg text-center hover:shadow-xl">
-          <p class="text-xl capitalize font-semibold"><%= pokemon.name %></p>
-        </a>
-      <% }); %>
+
+    <div class="bg-gray-200 p-4 rounded-lg shadow-inner text-black">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <% pokemonList.forEach(pokemon => { %>
+          <a href="/pokemon/<%= pokemon.name %>" 
+            class="p-4 bg-white shadow rounded-lg text-center hover:shadow-xl hover:scale-105 transition">
+            <p class="text-xl capitalize font-semibold"><%= pokemon.name %></p>
+          </a>
+        <% }); %>
+      </div>
     </div>
   </div>
+  
   <%- include("../partials/footer") %>
 </body>
 </html>
